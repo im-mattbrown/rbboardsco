@@ -1,0 +1,188 @@
+/* Shared: fill a fixed box, crop nicely */
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============ Banner ============ */
+.banner {
+  position: relative;
+  height: clamp(360px, 42vw, 560px);
+  overflow: hidden;
+}
+
+.bannerImg {
+  object-fit: cover;
+  object-position: center 35%;
+  z-index: 0;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0) 30%
+  );
+}
+
+/* ============ Meet Ric ============ */
+.meet {
+  padding-block: 88px;
+}
+
+.meetGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 433px) minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.meetTitle {
+  font-size: clamp(2rem, 3.5vw, 44px);
+  margin-bottom: 24px;
+}
+
+.meetText p {
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+.meetText p + p {
+  margin-top: 20px;
+}
+
+/* Collage */
+.collage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.collageLarge {
+  position: relative;
+  aspect-ratio: 1 / 1; /* square crop to match the 2x2 grid height */
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.collageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.collageCell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.collageWide {
+  grid-column: 1 / -1;
+  position: relative;
+  aspect-ratio: 680 / 294;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ============ Our Values ============ */
+.values {
+  /* raised above the footer's line1 so the line sits behind the images */
+  padding-block: 40px 96px;
+  position: relative;
+  z-index: 1;
+}
+
+.valuesTitle {
+  font-size: clamp(2rem, 3.5vw, 44px);
+  margin-bottom: 40px;
+}
+
+/* One grid holds the 3 text blocks (row 1) then the 3 images (row 2) */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 68px;
+}
+
+.valueTitle {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.valueText {
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.valueImageWrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cornerTL {
+  border-top-left-radius: 80px;
+}
+
+.cornerBR {
+  border-bottom-right-radius: 80px;
+}
+
+.valuesCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 900px) {
+  .meetGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Stacked: show each value's title + text directly above its image */
+  .valuesGrid > :nth-child(1) {
+    order: 1;
+  }
+  .valuesGrid > :nth-child(4) {
+    order: 2;
+  }
+  .valuesGrid > :nth-child(2) {
+    order: 3;
+  }
+  .valuesGrid > :nth-child(5) {
+    order: 4;
+  }
+  .valuesGrid > :nth-child(3) {
+    order: 5;
+  }
+  .valuesGrid > :nth-child(6) {
+    order: 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .meet,
+  .values {
+    padding-block: 64px;
+  }
+}

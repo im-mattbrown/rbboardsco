@@ -1,0 +1,57 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 68px;
+}
+
+.stepNum {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.stepText {
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin-bottom: 28px;
+}
+
+.videoWrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+  transition: box-shadow 0.3s ease;
+}
+
+.isActive {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Decorative corners (match the About "Our Values" images) */
+.cornerTL {
+  border-top-left-radius: 80px;
+}
+
+.cornerBR {
+  border-bottom-right-radius: 80px;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

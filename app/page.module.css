@@ -1,142 +1,288 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
+/* ============ Hero ============ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 620px;
+  max-height: 960px;
   display: flex;
-  flex: 1;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  overflow: hidden;
 }
 
-.main {
-  display: flex;
-  flex: 1;
+.heroVideo {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.intro {
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
+  align-items: center;
   gap: 16px;
-  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  padding-inline: var(--gutter);
 }
 
-.ctas a {
+.heroTitle {
+  color: #fff;
+  font-size: clamp(2.5rem, 6vw, 72px);
+  line-height: 1.15;
+  font-weight: 600;
+  max-width: 14ch;
+}
+
+.heroSubtitle {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 24px);
+}
+
+.glassBtn {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 32px;
+  border: 2px solid #fff;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.6vw, 24px);
+  box-shadow: -11px -10px 24px rgba(0, 0, 0, 0.12),
+    inset 2px 2px 9px rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.glassBtn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+/* ============ Shared section title ============ */
+.sectionTitle {
+  font-size: clamp(2rem, 3.5vw, 44px);
+  margin-bottom: 40px;
+}
+
+/* ============ Gallery ============ */
+.gallery {
+  background: var(--color-bg);
+  padding-block: 88px;
+}
+
+/* ============ About ============ */
+.about {
+  background: var(--color-bg);
+  padding-block: 96px;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 534px minmax(0, 1fr);
+  gap: 80px;
+  align-items: center;
+}
+
+/* Relative frame so the badge can peek outside the image */
+.aboutImageFrame {
+  position: relative;
+}
+
+.aboutImageWrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 16px 54px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* rbBoardsText badge — sits just above & to the right of the image.
+   Tweak top/right/width to fine-tune placement. */
+.aboutBadge {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 180px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.aboutText p {
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+.aboutCta {
   display: flex;
   justify-content: center;
+  margin-top: 64px;
+  /* Keep the button above the lines2 image so it stays clickable */
+  position: relative;
+  z-index: 2;
+}
+
+/* Full-width decorative divider (lines2.png) between About and Customer
+   Experiences. Full viewport width, height scales with the image. */
+.lines {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: auto;
+  z-index: 0;
+  /* Nudge up ~200px from its static position — adjust as needed */
+  transform: translateY(-350px);
+}
+
+/* ============ Customer Experiences ============ */
+.experiences {
+  background: var(--color-bg);
+  padding-block: 40px 96px;
+}
+
+.testimonial {
+  display: flex;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
+  gap: clamp(40px, 10vw, 138px);
+}
+
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 166px;
+  height: 166px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.avatarName {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.quote {
+  position: relative;
+  font-family: var(--font-body), sans-serif;
+  font-style: italic;
   font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 24px);
+  line-height: 1.5;
+  max-width: 728px;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.quoteMark {
+  font-family: var(--font-heading), serif;
+  font-style: normal;
+  font-size: 3em;
+  line-height: 0;
+  color: var(--color-text);
+  vertical-align: -0.35em;
+  margin-right: 6px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.quoteMarkEnd {
+  margin-right: 0;
+  margin-left: 6px;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+/* ============ Our Process ============ */
+.process {
+  /* transparent + raised so the footer's line1 shows behind the videos */
+  background: transparent;
+  padding-block: 40px 96px;
+  position: relative;
+  z-index: 1;
+}
+
+.processCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 900px) {
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  .testimonial {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
 @media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
+  .gallery,
+  .about,
+  .process {
+    padding-block: 64px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+/* Mobile: full-screen hero with the portrait video */
+@media (max-width: 640px) {
+  .hero {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* fill even as the mobile browser chrome shows/hides */
+    min-height: 0;
+    max-height: none;
   }
 
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  /* Badge peeks outside the image and breaks the mobile layout — hide it */
+  .aboutBadge {
+    display: none;
   }
 }

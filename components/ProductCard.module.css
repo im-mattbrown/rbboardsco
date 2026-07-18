@@ -1,0 +1,110 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  background: url("/assets/gallery-card-bg.png") center / cover no-repeat,
+    #efece5;
+  border-radius: var(--radius);
+  box-shadow: 0 16px 54px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.index {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.title {
+  flex: none;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-text);
+  padding-right: 40px; /* keep clear of the index number */
+}
+
+/* Board image — whole board shown on the paper texture */
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 496 / 344;
+  margin-block: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.thumbImg {
+  object-fit: contain;
+}
+
+.price {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.priceLabel {
+  font-weight: 600;
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.priceSold {
+  text-decoration: line-through;
+  color: var(--color-muted);
+}
+
+.soldTag {
+  font-weight: 700;
+  font-size: 0.7em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b23b3b;
+}
+
+.specs {
+  flex: none;
+  list-style: disc;
+  padding-left: 22px;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.inquireBtn {
+  flex: none;
+  margin-top: 22px;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-black);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  font-family: var(--font-nav), sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s ease;
+}
+
+.inquireBtn:hover {
+  opacity: 0.85;
+}

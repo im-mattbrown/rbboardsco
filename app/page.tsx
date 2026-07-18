@@ -1,66 +1,114 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
+import ProcessVideos from "@/components/ProcessVideos";
+import GallerySlider from "@/components/GallerySlider";
+import HeroVideo from "@/components/HeroVideo";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      {/* ---------- Hero ---------- */}
+      <section className={styles.hero}>
+        <HeroVideo className={styles.heroVideo} />
+        <div className={styles.heroOverlay} />
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Hand Crafted Cutting Boards</h1>
+          <p className={styles.heroSubtitle}>Made in Newcastle, CA</p>
+          <Link href="/shop" className={styles.glassBtn}>
+            Shop Now
+          </Link>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ---------- Gallery ---------- */}
+      <section id="gallery" className={styles.gallery}>
+        <div className="container">
+          <GallerySlider />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ---------- About ---------- */}
+      <section className={styles.about}>
+        <div className="container">
+          <div className={styles.aboutGrid}>
+            <div className={styles.aboutImageFrame}>
+              <div className={styles.aboutImageWrap}>
+                <Image
+                  src="/assets/about.png"
+                  alt="A collection of hand crafted boards and pieces"
+                  width={534}
+                  height={497}
+                  className={styles.aboutImage}
+                />
+              </div>
+              <Image
+                src="/assets/rbBoardsText.png"
+                alt="RB Boards — Newcastle, CA"
+                width={748}
+                height={748}
+                className={styles.aboutBadge}
+              />
+            </div>
+            <div className={styles.aboutText}>
+              <h2 className={styles.sectionTitle}>About</h2>
+              <p>
+                  R B Boards is a woodworking company specialzing in unique custome boards and more. The unique products built at R B Boards include classic cutting boards, specialty cutting boards (often used a charquterie boards) and other specialty products. these include custom cookbook holders, candle stick and phone holders. RB Boards used locally sourced hardwoods such a maple, walnut, paduck, purple heart and osage orange. These woods have excellent qualities specifically adept at the various uses they are built for. RB Boards also uses local barnwoods and natural local woods such as oak and various nut and fruit tree woods. We finish our products with food grade mineral oil and then are hand rubbed with our own unique wood butter made of mineral oil, beeswax and carnuba wax. The majority of our boards are 12 inches wide by 18 inches long an 3/4 inches think but custom sizes are available. Contact us to find out what might be in our inventory or if we can build a product specific to your needs. Remember, no 2 boards are the same but all of our products are handmade and will last for many years!         
+              </p>
+            </div>
+          </div>
+          <div className={styles.aboutCta}>
+            <Link href="/about" className="btn">
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Section divider ---------- */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/assets/lines2.png" alt="" className={styles.lines} />
+
+      {/* ---------- Customer Experiences ---------- */}
+      <section className={styles.experiences}>
+        <div className="container">
+          <h2 className={styles.sectionTitle}>Customer Experiences</h2>
+          <figure className={styles.testimonial}>
+            <div className={styles.avatar}>
+              <Image
+                src="/assets/testimonial-1.png"
+                alt="Mike K."
+                width={166}
+                height={166}
+                className={styles.avatarImg}
+              />
+              <figcaption className={styles.avatarName}>Mike K.</figcaption>
+            </div>
+            <blockquote className={styles.quote}>
+              <span className={styles.quoteMark}>“</span>
+              this is an example of a customer testimonial. they liked the
+              product and would highly recommend this to their friends and
+              family
+              <span className={`${styles.quoteMark} ${styles.quoteMarkEnd}`}>
+                ”
+              </span>
+            </blockquote>
+          </figure>
+        </div>
+      </section>
+
+      {/* ---------- Our Process ---------- */}
+      <section className={styles.process}>
+        <div className="container">
+          <h2 className={styles.sectionTitle}>Our Process</h2>
+          <ProcessVideos />
+          <div className={styles.processCta}>
+            <Link href="/shop" className="btn">
+              Shop Now
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

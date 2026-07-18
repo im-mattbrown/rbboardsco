@@ -1,0 +1,189 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--header-height) + 96px);
+  padding-bottom: 180px;
+  min-height: 90vh;
+}
+
+.title {
+  font-family: var(--font-nav), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 32px);
+  color: #000;
+  margin-bottom: 48px;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 56px;
+  row-gap: 40px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-family: var(--font-nav), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  color: var(--color-text);
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  padding: 0 20px;
+  height: 72px;
+  box-shadow: 0 16px 54px rgba(0, 0, 0, 0.03), 0 5px 17px rgba(0, 0, 0, 0.05),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.field textarea {
+  height: 305px;
+  padding: 20px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #c9c9c9;
+}
+
+/* Select with custom chevron */
+.selectWrap {
+  position: relative;
+}
+
+.selectWrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 56px;
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: #1a1a1a;
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+/* SEND button — semi-transparent black per Figma */
+.sendBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 12px 64px;
+  font-family: var(--font-nav), sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Active look once the required fields are filled */
+.sendBtnActive {
+  background: #1a1a1a;
+}
+
+.sendBtn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translateY(-1px);
+}
+
+.sendBtn:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.errorMsg {
+  margin-top: 24px;
+  font-family: var(--font-body), sans-serif;
+  color: #c0392b;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success {
+  padding-block: 40px 80px;
+}
+
+.success h2 {
+  font-family: var(--font-nav), sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 28px);
+  margin-bottom: 12px;
+}
+
+.success p {
+  font-family: var(--font-body), sans-serif;
+  color: var(--color-muted);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Decorative curve pinned to the bottom */
+.curve {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 320px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+  .field input,
+  .field select {
+    height: 60px;
+  }
+  .field textarea {
+    height: 220px;
+  }
+  .page {
+    padding-bottom: 140px;
+  }
+}

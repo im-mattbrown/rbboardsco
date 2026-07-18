@@ -1,0 +1,86 @@
+.header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Logo mark is dark; keep it readable over the photo hero */
+.logo img {
+  width: 56px;
+  height: 56px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  font-family: var(--font-nav), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.63);
+}
+
+.nav a {
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #ffffff;
+}
+
+.nav a.active {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+}
+
+/* Dark variant — for light-background pages (e.g. Contact) */
+.dark .logo img {
+  /* Source SVG is white-filled; force it black on light backgrounds */
+  filter: brightness(0);
+  opacity: 1;
+}
+
+.dark .nav {
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.dark .nav a:hover {
+  color: #1a1a1a;
+}
+
+.dark .nav a.active {
+  color: #1a1a1a;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    gap: 22px;
+    font-size: 15px;
+  }
+  .logo img {
+    width: 44px;
+    height: 44px;
+  }
+}

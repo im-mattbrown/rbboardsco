@@ -1,0 +1,73 @@
+.footer {
+  position: relative;
+  background: var(--color-white);
+  padding-block: 40px 32px;
+}
+
+/* Decorative line pinned to the bottom, full width, behind the content */
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.copy {
+  flex: 1;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.instagram img {
+  width: 30px;
+  height: 30px;
+  transition: opacity 0.2s ease;
+}
+
+.instagram:hover img {
+  opacity: 0.6;
+}
+
+.credit {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.studio {
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .copy,
+  .credit {
+    flex: none;
+    justify-content: center;
+  }
+}
