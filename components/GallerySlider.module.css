@@ -16,6 +16,20 @@
 .controls {
   display: flex;
   gap: 12px;
+  /* Fades in with the title (opacity only, no movement) when in view */
+  opacity: 0;
+  transition: opacity 1.2s ease 0.15s;
+}
+
+.inView .controls {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .controls {
+    opacity: 1;
+    transition: none;
+  }
 }
 
 .arrow {

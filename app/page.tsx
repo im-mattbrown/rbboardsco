@@ -4,6 +4,8 @@ import styles from "./page.module.css";
 import ProcessVideos from "@/components/ProcessVideos";
 import GallerySlider from "@/components/GallerySlider";
 import HeroVideo from "@/components/HeroVideo";
+import RevealText from "@/components/RevealText";
+import InView from "@/components/InView";
 
 export default function Home() {
   return (
@@ -13,11 +15,29 @@ export default function Home() {
         <HeroVideo className={styles.heroVideo} />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Hand Crafted Cutting Boards</h1>
+          <h1
+            className={styles.heroTitle}
+            aria-label="Hand Crafted Cutting Boards"
+          >
+            <span className={styles.word}>
+              <span className={styles.wordInner}>Hand</span>
+            </span>{" "}
+            <span className={styles.word}>
+              <span className={styles.wordInner}>Crafted</span>
+            </span>{" "}
+            <span className={styles.word}>
+              <span className={styles.wordInner}>Cutting</span>
+            </span>{" "}
+            <span className={styles.word}>
+              <span className={styles.wordInner}>Boards</span>
+            </span>
+          </h1>
           <p className={styles.heroSubtitle}>Made in Newcastle, CA</p>
-          <Link href="/shop" className={styles.glassBtn}>
-            Shop Now
-          </Link>
+          <span className={styles.heroCtaWrap}>
+            <Link href="/shop" className={styles.glassBtn}>
+              Shop Now
+            </Link>
+          </span>
         </div>
       </section>
 
@@ -32,7 +52,10 @@ export default function Home() {
       <section className={styles.about}>
         <div className="container">
           <div className={styles.aboutGrid}>
-            <div className={styles.aboutImageFrame}>
+            <InView
+              className={styles.aboutImageFrame}
+              activeClassName={styles.inView}
+            >
               <div className={styles.aboutImageWrap}>
                 <Image
                   src="/assets/about.png"
@@ -49,9 +72,9 @@ export default function Home() {
                 height={748}
                 className={styles.aboutBadge}
               />
-            </div>
+            </InView>
             <div className={styles.aboutText}>
-              <h2 className={styles.sectionTitle}>About</h2>
+              <RevealText text="About" className={styles.sectionTitle} />
               <p>
                   R B Boards is a woodworking company specialzing in unique custome boards and more. The unique products built at R B Boards include classic cutting boards, specialty cutting boards (often used a charquterie boards) and other specialty products. these include custom cookbook holders, candle stick and phone holders. RB Boards used locally sourced hardwoods such a maple, walnut, paduck, purple heart and osage orange. These woods have excellent qualities specifically adept at the various uses they are built for. RB Boards also uses local barnwoods and natural local woods such as oak and various nut and fruit tree woods. We finish our products with food grade mineral oil and then are hand rubbed with our own unique wood butter made of mineral oil, beeswax and carnuba wax. The majority of our boards are 12 inches wide by 18 inches long an 3/4 inches think but custom sizes are available. Contact us to find out what might be in our inventory or if we can build a product specific to your needs. Remember, no 2 boards are the same but all of our products are handmade and will last for many years!         
               </p>
@@ -72,7 +95,10 @@ export default function Home() {
       {/* ---------- Customer Experiences ---------- */}
       <section className={styles.experiences}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Customer Experiences</h2>
+          <RevealText
+            text="Customer Experiences"
+            className={styles.sectionTitle}
+          />
           <figure className={styles.testimonial}>
             <div className={styles.avatar}>
               <Image
@@ -100,7 +126,7 @@ export default function Home() {
       {/* ---------- Our Process ---------- */}
       <section className={styles.process}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Our Process</h2>
+          <RevealText text="Our Process" className={styles.sectionTitle} />
           <ProcessVideos />
           <div className={styles.processCta}>
             <Link href="/shop" className="btn">

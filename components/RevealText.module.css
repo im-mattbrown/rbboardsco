@@ -1,0 +1,26 @@
+/* Typographic styling comes from the passed className; this only handles motion */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.15em; /* room for descenders (y, p, g) */
+  margin-bottom: -0.15em;
+}
+
+.wordInner {
+  display: inline-block;
+  transform: translateY(120%);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.visible .wordInner {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordInner {
+    transform: none;
+    transition: none;
+  }
+}

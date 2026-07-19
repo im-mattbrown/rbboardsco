@@ -4,6 +4,8 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./GallerySlider.module.css";
+import RevealText from "./RevealText";
+import InView from "./InView";
 
 type Slide = {
   id: number;
@@ -21,7 +23,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: 1,
-    image: "/assets/RB-Boards-9.jpg",
+    image: "/assets/RB-Boards-16.png",
     title: "Placeholder Title",
     price: "$200",
     sold: true,
@@ -31,7 +33,7 @@ const SLIDES: Slide[] = [
   },
   {
     id: 2,
-    image: "/assets/RB-Boards-3.jpg",
+    image: "/assets/RB-Boards-17.png",
     title: "Placeholder Title",
     price: "$200",
     sold: false,
@@ -41,7 +43,7 @@ const SLIDES: Slide[] = [
   },
   {
     id: 3,
-    image: "/assets/RB-Boards-2.jpg",
+    image: "/assets/RB-Boards-14.png",
     title: "Placeholder Title",
     price: "$200",
     sold: false,
@@ -51,7 +53,7 @@ const SLIDES: Slide[] = [
   },
   {
     id: 4,
-    image: "/assets/RB-Boards-1.jpg",
+    image: "/assets/RB-Boards-15.png",
     title: "Placeholder Title",
     price: "$200",
     sold: false,
@@ -165,8 +167,12 @@ export default function GallerySlider() {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.head}>
-        <h2 className={styles.title}>Gallery</h2>
+      <InView
+        className={styles.head}
+        activeClassName={styles.inView}
+        threshold={0.6}
+      >
+        <RevealText text="Gallery" className={styles.title} />
         <div className={styles.controls}>
           <button
             type="button"
@@ -201,7 +207,7 @@ export default function GallerySlider() {
             </svg>
           </button>
         </div>
-      </div>
+      </InView>
 
       <div ref={rowRef} className={styles.row} style={{ height: dims.height }}>
         {SLIDES.map((slide, i) => {

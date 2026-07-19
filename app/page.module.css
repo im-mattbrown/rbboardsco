@@ -51,10 +51,58 @@
   max-width: 14ch;
 }
 
+/* Each word sits in a mask; the inner span rises up into view (sunrise) */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.15em; /* room for descenders like the "g" in Cutting */
+  margin-bottom: -0.15em;
+}
+
+.wordInner {
+  display: inline-block;
+  transform: translateY(120%);
+  animation: heroWordRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.word:nth-child(1) .wordInner {
+  animation-delay: 0.05s;
+}
+.word:nth-child(2) .wordInner {
+  animation-delay: 0.19s;
+}
+.word:nth-child(3) .wordInner {
+  animation-delay: 0.33s;
+}
+.word:nth-child(4) .wordInner {
+  animation-delay: 0.47s;
+}
+
+@keyframes heroWordRise {
+  from {
+    transform: translateY(120%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .heroSubtitle {
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
   font-size: clamp(1rem, 2vw, 24px);
+  /* Fades in across the whole title reveal (matching its timing) */
+  animation: heroFadeIn 1.3s ease 0.05s both;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .glassBtn {
@@ -80,6 +128,38 @@
 .glassBtn:hover {
   background: rgba(255, 255, 255, 0.28);
   transform: translateY(-1px);
+}
+
+/* Button rises + fades in between the two title lines (Crafted → Cutting) */
+.heroCtaWrap {
+  display: inline-block;
+  animation: heroBtnIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+
+@keyframes heroBtnIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wordInner,
+  .heroSubtitle,
+  .heroCtaWrap {
+    animation: none;
+  }
+  .wordInner {
+    transform: none;
+  }
+  .heroSubtitle {
+    opacity: 1;
+  }
 }
 
 /* ============ Shared section title ============ */
@@ -116,6 +196,13 @@
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 16px 54px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.05);
+  /* Hidden, then wipes down top -> bottom when in view */
+  clip-path: inset(0 0 100% 0 round var(--radius));
+  transition: clip-path 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.inView .aboutImageWrap {
+  clip-path: inset(0 0 0 0 round var(--radius));
 }
 
 /* rbBoardsText badge — sits just above & to the right of the image.
@@ -124,10 +211,34 @@
   position: absolute;
   top: -100px;
   right: -100px;
+  /* Exact square box so it rotates around its true center (like a clock) */
   width: 180px;
-  height: auto;
+  height: 180px;
+  display: block;
+  object-fit: contain;
   z-index: 2;
   pointer-events: none;
+  /* Starts small, expands into place when in view */
+  transform: scale(0.3);
+  transform-origin: 50% 50%;
+  transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.inView .aboutBadge {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aboutImageWrap {
+    clip-path: none;
+    transition: none;
+  }
+  .aboutBadge {
+    transform: none;
+    transition: none;
+  }
 }
 
 .aboutImage {

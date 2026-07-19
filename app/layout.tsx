@@ -3,6 +3,7 @@ import { Crimson_Text, Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 // Headings (serif) — Figma uses "Crimson Text"
 const crimson = Crimson_Text({
@@ -42,9 +43,11 @@ export default function RootLayout({
       className={`${crimson.variable} ${montserrat.variable} ${inter.variable}`}
     >
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Header />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
