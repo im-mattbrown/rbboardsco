@@ -209,11 +209,11 @@
    Tweak top/right/width to fine-tune placement. */
 .aboutBadge {
   position: absolute;
-  top: -100px;
-  right: -100px;
+  top: -60px;
+  right: -60px;
   /* Exact square box so it rotates around its true center (like a clock) */
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   display: block;
   object-fit: contain;
   z-index: 2;
@@ -313,7 +313,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 12px;
+  bottom: -8px;
   z-index: 1;
   text-align: center;
   color: #fff;

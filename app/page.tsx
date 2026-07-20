@@ -6,6 +6,7 @@ import GallerySlider from "@/components/GallerySlider";
 import HeroVideo from "@/components/HeroVideo";
 import RevealText from "@/components/RevealText";
 import InView from "@/components/InView";
+import Typewriter from "@/components/Typewriter";
 
 export default function Home() {
   return (
@@ -112,9 +113,7 @@ export default function Home() {
             </div>
             <blockquote className={styles.quote}>
               <span className={styles.quoteMark}>“</span>
-              this is an example of a customer testimonial. they liked the
-              product and would highly recommend this to their friends and
-              family
+              <Typewriter text="this is an example of a customer testimonial. they liked the product and would highly recommend this to their friends and family" />
               <span className={`${styles.quoteMark} ${styles.quoteMarkEnd}`}>
                 ”
               </span>

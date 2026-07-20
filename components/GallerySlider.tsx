@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./GallerySlider.module.css";
@@ -24,49 +30,49 @@ const SLIDES: Slide[] = [
   {
     id: 1,
     image: "/assets/RB-Boards-16.png",
-    title: "Placeholder Title",
-    price: "$200",
-    sold: true,
-    dimensions: "36” × 22” × 2”",
-    materials: "Rosewood, Purple Heart, Teak",
+    title: "Woven Charcuterie & Cutting Board",
+    price: "$150",
+    sold: false,
+    dimensions: "12” × 18” × 3/4”",
+    materials: "Maple, Black Walnut, Paduck, Purple Heart, Wengue ",
     href: "/#gallery",
   },
   {
     id: 2,
     image: "/assets/RB-Boards-17.png",
-    title: "Placeholder Title",
-    price: "$200",
+    title: "Woven Charcuterie & Cutting Board",
+    price: "$150",
     sold: false,
-    dimensions: "36” × 22” × 2”",
-    materials: "Rosewood, Purple Heart, Teak",
+    dimensions: "12” × 28” × 3/4”",
+    materials: "Maple, Black Walnut, Paduck, Wengue ",
     href: "/#gallery",
   },
   {
     id: 3,
     image: "/assets/RB-Boards-14.png",
-    title: "Placeholder Title",
-    price: "$200",
+    title: "Woven Cheese Slicer",
+    price: "$120",
     sold: false,
-    dimensions: "36” × 22” × 2”",
-    materials: "Rosewood, Purple Heart, Teak",
+    dimensions: "8” × 10” × 1/2”",
+    materials: "Maple, Walnut, Paduck",
     href: "/#gallery",
   },
   {
     id: 4,
     image: "/assets/RB-Boards-15.png",
-    title: "Placeholder Title",
-    price: "$200",
+    title: "Woven Cookbook Holder",
+    price: "$160",
     sold: false,
-    dimensions: "36” × 22” × 2”",
-    materials: "Rosewood, Purple Heart, Teak",
+    dimensions: "11” × 12” × 9”",
+     materials: "Maple, Black Walnut, Paduck, Purple Heart",
     href: "/#gallery",
   },
   {
     id: 5,
     image: "/assets/RB-Boards-4.jpg",
-    title: "Placeholder Title",
-    price: "$200",
-    sold: false,
+    title: "Woven Cutting Board",
+    price: "$150",
+    sold: true,
     dimensions: "36” × 22” × 2”",
     materials: "Rosewood, Purple Heart, Teak",
     href: "/#gallery",
@@ -74,9 +80,9 @@ const SLIDES: Slide[] = [
   {
     id: 6,
     image: "/assets/RB-Boards-5.jpg",
-    title: "Placeholder Title",
-    price: "$200",
-    sold: false,
+    title: "Woven Cutting Board",
+    price: "$150",
+    sold: true,
     dimensions: "36” × 22” × 2”",
     materials: "Rosewood, Purple Heart, Teak",
     href: "/#gallery",
@@ -84,9 +90,9 @@ const SLIDES: Slide[] = [
   {
     id: 7,
     image: "/assets/RB-Boards-6.jpg",
-    title: "Placeholder Title",
-    price: "$200",
-    sold: false,
+    title: "Small Striped Cutting Board",
+    price: "$100",
+    sold: true,
     dimensions: "36” × 22” × 2”",
     materials: "Rosewood, Purple Heart, Teak",
     href: "/#gallery",
@@ -138,6 +144,32 @@ export default function GallerySlider() {
     mobile: false,
   });
   const rowRef = useRef<HTMLDivElement>(null);
+
+  // Intro accordion slide-out (plays once when scrolled into view)
+  const [revealed, setRevealed] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!revealed) return;
+    const t = window.setTimeout(() => setIntroDone(true), 900);
+    return () => window.clearTimeout(t);
+  }, [revealed]);
 
   // Keep the active card square by deriving sizes from the row's width.
   const measure = useCallback(() => {
@@ -212,9 +244,31 @@ export default function GallerySlider() {
       <div ref={rowRef} className={styles.row} style={{ height: dims.height }}>
         {SLIDES.map((slide, i) => {
           const isActive = i === active;
-          const style = dims.mobile
-            ? undefined
-            : { width: isActive ? dims.activeW : dims.strip };
+
+          let style: React.CSSProperties | undefined;
+          if (dims.mobile) {
+            style = undefined;
+          } else if (introDone) {
+            // Settled: normal accordion widths (click to expand)
+            style = { width: isActive ? dims.activeW : dims.strip };
+          } else if (i === 0) {
+            // Card 01 stays square on the left, above the strips
+            style = { width: dims.activeW, zIndex: 2 };
+          } else {
+            // Strips start hidden behind card 01, then slide out to place.
+            // 0.3s each, 0.075s apart -> ~0.9s total.
+            style = {
+              width: dims.strip,
+              zIndex: 1,
+              transform: revealed
+                ? "translateX(0)"
+                : `translateX(${-i * dims.strip}px)`,
+              transitionProperty: "transform",
+              transitionDuration: revealed ? "0.3s" : "0s",
+              transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+              transitionDelay: revealed ? `${(i - 1) * 0.075}s` : "0s",
+            };
+          }
 
           return (
             <div
