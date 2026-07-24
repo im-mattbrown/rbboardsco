@@ -80,6 +80,7 @@
   flex: none;
   list-style: disc;
   padding-left: 22px;
+  margin-bottom: 22px; /* min gap before the bottom-pinned button */
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -89,7 +90,8 @@
 
 .inquireBtn {
   flex: none;
-  margin-top: 22px;
+  /* Pin to the bottom so every card's button lines up */
+  margin-top: auto;
   align-self: stretch;
   display: inline-flex;
   align-items: center;

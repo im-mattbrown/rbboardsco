@@ -33,7 +33,14 @@ export default function Footer() {
 
         <p className={styles.credit}>
           <span>designed and developed by</span>
-          <span className={styles.studio}>monom studio</span>
+          <a
+            href="https://monomstud.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.studio}
+          >
+            monom studio
+          </a>
         </p>
       </div>
     </footer>
