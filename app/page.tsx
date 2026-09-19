@@ -77,7 +77,7 @@ export default function Home() {
             <div className={styles.aboutText}>
               <RevealText text="About" className={styles.sectionTitle} />
               <p>
-                  R B Boards is a woodworking company specialzing in unique custome boards and more. The unique products built at R B Boards include classic cutting boards, specialty cutting boards (often used a charquterie boards) and other specialty products. these include custom cookbook holders, candle stick and phone holders. RB Boards used locally sourced hardwoods such a maple, walnut, paduck, purple heart and osage orange. These woods have excellent qualities specifically adept at the various uses they are built for. RB Boards also uses local barnwoods and natural local woods such as oak and various nut and fruit tree woods. We finish our products with food grade mineral oil and then are hand rubbed with our own unique wood butter made of mineral oil, beeswax and carnuba wax. The majority of our boards are 12 inches wide by 18 inches long an 3/4 inches think but custom sizes are available. Contact us to find out what might be in our inventory or if we can build a product specific to your needs. Remember, no 2 boards are the same but all of our products are handmade and will last for many years!         
+                  R B Boards is a woodworking company specialzing in unique custome boards and more. The unique products built at R B Boards include classic cutting boards, specialty cutting boards (often used a charcuterie boards) and other specialty products. these include custom cookbook holders, candle stick and phone holders. RB Boards used locally sourced hardwoods such a maple, walnut, paduck, purple heart and osage orange. These woods have excellent qualities specifically adept at the various uses they are built for. RB Boards also uses local barnwoods and natural local woods such as oak and various nut and fruit tree woods. We finish our products with food grade mineral oil and then are hand rubbed with our own unique wood butter made of mineral oil, beeswax and carnuba wax. The majority of our boards are 12 inches wide by 18 inches long an 3/4 inches think but custom sizes are available. Contact us to find out what might be in our inventory or if we can build a product specific to your needs. Remember, no 2 boards are the same but all of our products are handmade and will last for many years!         
               </p>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Home() {
             </div>
             <blockquote className={styles.quote}>
               <span className={styles.quoteMark}>“</span>
-              <Typewriter text="this is an example of a customer testimonial. they liked the product and would highly recommend this to their friends and family" />
+              <Typewriter text="The board beat all expectations and looks even better in person. It always gets remarks from guests and is a conversation starter when used to serve food on" />
               <span className={`${styles.quoteMark} ${styles.quoteMarkEnd}`}>
                 ”
               </span>

@@ -16,9 +16,11 @@ export type Product = {
 export default function ProductCard({
   product,
   onInquire,
+  onView,
 }: {
   product: Product;
   onInquire: (product: Product) => void;
+  onView: (product: Product) => void;
 }) {
   return (
     <article className={styles.card}>
@@ -28,7 +30,12 @@ export default function ProductCard({
 
       <h3 className={styles.title}>{product.title}</h3>
 
-      <div className={styles.thumb}>
+      <button
+        type="button"
+        className={styles.thumb}
+        onClick={() => onView(product)}
+        aria-label={`View ${product.title}`}
+      >
         <Image
           src={product.image}
           alt={product.title}
@@ -36,7 +43,7 @@ export default function ProductCard({
           sizes="(max-width: 520px) 90vw, (max-width: 768px) 45vw, (max-width: 1100px) 30vw, 22vw"
           className={styles.thumbImg}
         />
-      </div>
+      </button>
 
       <p className={styles.price}>
         <span className={styles.priceLabel}>Price</span>

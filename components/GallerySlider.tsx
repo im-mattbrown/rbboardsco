@@ -35,7 +35,7 @@ const SLIDES: Slide[] = [
     sold: false,
     dimensions: "12” × 18” × 3/4”",
     materials: "Maple, Black Walnut, Paduck, Purple Heart, Wengue ",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 2,
@@ -45,7 +45,7 @@ const SLIDES: Slide[] = [
     sold: false,
     dimensions: "12” × 18” × 3/4”",
     materials: "Maple, Black Walnut, Paduck, Wengue ",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 3,
@@ -55,7 +55,7 @@ const SLIDES: Slide[] = [
     sold: false,
     dimensions: "8” × 10” × 1/2”",
     materials: "Maple, Walnut, Paduck",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const SLIDES: Slide[] = [
     sold: false,
     dimensions: "11” × 12” × 9”",
      materials: "Maple, Black Walnut, Paduck, Purple Heart",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ const SLIDES: Slide[] = [
     sold: true,
     dimensions: "12” × 18” × 3/4”",
     materials: "Rosewood, Purple Heart, Teak",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 6,
@@ -85,7 +85,7 @@ const SLIDES: Slide[] = [
     sold: true,
     dimensions: "12” × 18” × 3/4”",
     materials: "Rosewood, Walnut, Teak",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 7,
@@ -95,7 +95,7 @@ const SLIDES: Slide[] = [
     sold: true,
     dimensions: "6” × 8” × 1/2”",
     materials: "Maple, Walnut, Teak",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 8,
@@ -105,7 +105,7 @@ const SLIDES: Slide[] = [
     sold: true,
     dimensions: "10” × 18” × 3/4”",
     materials: "Maple, Walnut, Teak",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 9,
@@ -115,7 +115,7 @@ const SLIDES: Slide[] = [
     sold: true,
     dimensions: "18” × 20” × 1/2”",
     materials: "Rosewood, Maple, Walnut, Teak",
-    href: "/#gallery",
+    href: "/shop",
   },
   {
     id: 10,
@@ -125,7 +125,7 @@ const SLIDES: Slide[] = [
     sold: true,
     dimensions: "6” × 3” × 1/2”",
     materials: "Maple, Walnut, Teak",
-    href: "/#gallery",
+    href: "/shop",
   },
 ];
 

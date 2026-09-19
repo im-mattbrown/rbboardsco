@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ProductCard, { type Product } from "./ProductCard";
 import InquiryModal from "./InquiryModal";
+import ProductModal from "./ProductModal";
 import styles from "./ShopGrid.module.css";
 
 // 13 products — edit each object to customize that card.
@@ -164,6 +165,7 @@ const PRODUCTS: Product[] = [
 
 export default function ShopGrid() {
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
+  const [viewProduct, setViewProduct] = useState<Product | null>(null);
 
   return (
     <>
@@ -173,9 +175,20 @@ export default function ShopGrid() {
             key={product.id}
             product={product}
             onInquire={setActiveProduct}
+            onView={setViewProduct}
           />
         ))}
       </div>
+
+      <ProductModal
+        open={viewProduct !== null}
+        product={viewProduct}
+        onClose={() => setViewProduct(null)}
+        onInquire={(product) => {
+          setViewProduct(null);
+          setActiveProduct(product);
+        }}
+      />
 
       <InquiryModal
         open={activeProduct !== null}
